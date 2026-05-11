@@ -1,46 +1,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import coverImage from '../src/assets/images/cover.jpg.png';
 
 const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
       {/* Background Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Grain noise via SVG feTurbulence */}
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="4" stitchTiles="stitch"/>
-              <feColorMatrix type="saturate" values="0"/>
-            </filter>
-          </defs>
-          <rect width="100%" height="100%" filter="url(#grain-filter)" opacity="0.38"/>
-        </svg>
-
-        {/* Central glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 65% 52% at 50% 50%, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.12) 38%, rgba(0,0,0,0) 72%)',
-            mixBlendMode: 'screen',
-          }}
-        />
-
-        {/* Horizontal scanlines */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.016) 3px, rgba(255,255,255,0.016) 4px)',
-          }}
-        />
-
-        {/* Edge vignette */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 38%, rgba(0,0,0,0.92) 100%)',
-          }}
+        {/* Cover image */}
+        <img
+          src={coverImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
         />
 
         {/* Top/bottom gradient */}
