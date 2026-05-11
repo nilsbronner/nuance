@@ -32,10 +32,8 @@ const BandSection: React.FC<BandSectionProps> = ({
         {/* Color Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/40 z-0"></div>
 
-        {/* CRT Noise Overlay on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity bg-[url('https://media.giphy.com/media/oEI9uWUicG3P1d9V0T/giphy.gif')] bg-cover mix-blend-screen"></div>
 
-        <div className="relative z-10 px-6 md:px-12 w-full flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
+<div className="relative z-10 px-6 md:px-12 w-full flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
           <div>
             <span className="text-[9px] tracking-[0.4em] lowercase text-white/20 font-bold mb-2 block">
               file_0{index + 1} /// {id}

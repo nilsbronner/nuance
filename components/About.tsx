@@ -45,8 +45,7 @@ const About: React.FC = () => {
           viewport={{ once: true }}
           className="relative aspect-square"
         >
-          <div className="absolute -inset-4 border border-white/5 rounded-full animate-pulse"></div>
-          <img 
+<img 
             src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=1000" 
             alt="Vision" 
             className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-1000"
