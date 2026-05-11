@@ -32,9 +32,6 @@ const Hero: React.FC = () => {
         >
           nuance
         </h1>
-        <p className="text-[11px] md:text-[12px] lowercase tracking-[0.8em] font-medium opacity-40 select-none">
-          electronic music & digital arts
-        </p>
       </motion.div>
 
       {/* Navigation shortcuts */}
