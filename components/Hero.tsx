@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
         <img
           src={coverImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
         />
 
         {/* Top/bottom gradient */}
