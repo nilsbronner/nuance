@@ -13,21 +13,11 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10 opacity-70"></div>
         
         {/* Video Element - Focused on light and movement to match "nuance" sessions */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src={posterImage}
+          alt=""
           className="w-full h-full object-cover grayscale brightness-[0.4] contrast-[1.1] scale-105"
-          poster={posterImage}
-        >
-          {/* Note: Remplacer cette URL par le lien direct .mp4 de l'un de vos lives YouTube */}
-          <source 
-            src="https://cdn.pixabay.com/video/2021/04/12/70878-537443834_large.mp4" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
+        />
       </div>
 
       {/* Foreground Content */}
