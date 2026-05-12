@@ -35,7 +35,7 @@
 
 @layer components {
   .logo-outline {
-    @apply text-white font-bold tracking-[1em] pl-[1em] opacity-90 transition-opacity lowercase;
+    @apply text-white font-bold tracking-[0.3em] pl-[0.3em] opacity-90 transition-opacity lowercase;
     font-family: var(--font-gilroy);
   }
 
