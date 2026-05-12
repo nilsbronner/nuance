@@ -89,13 +89,13 @@ const SoundCloudPlayer: React.FC = () => {
       <iframe
         ref={iframeRef}
         src={SC_EMBED_URL}
-        style={{ display: 'none' }}
+        style={{ position: 'absolute', width: 0, height: 0, border: 0, visibility: 'hidden' }}
         allow="autoplay"
         title="soundcloud-player"
       />
 
       {/* Custom UI */}
-      <div className="w-[320px] md:w-[460px] bg-black/75 backdrop-blur-md border border-white/10 px-5 py-4">
+      <div className="w-[320px] md:w-[460px] bg-black/30 backdrop-blur-sm border border-white/10 px-5 py-4">
         {/* Header label */}
         <div className="flex items-center justify-between mb-3">
           <span className="text-[7px] uppercase tracking-[0.5em] text-white/20">ciel noir /// nuance</span>

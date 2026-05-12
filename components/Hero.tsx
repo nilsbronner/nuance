@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* SoundCloud Player — custom DA */}
-      <div className="absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-40">
+      <div className="absolute bottom-32 md:bottom-36 left-1/2 -translate-x-1/2 z-40">
         <SoundCloudPlayer />
       </div>
 
