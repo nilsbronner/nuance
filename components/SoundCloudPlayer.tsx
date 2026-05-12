@@ -95,7 +95,7 @@ const SoundCloudPlayer: React.FC = () => {
       />
 
       {/* Custom UI */}
-      <div className="w-[320px] md:w-[460px] bg-black/30 backdrop-blur-sm border border-white/10 px-5 py-4">
+      <div className="w-[420px] md:w-[620px] bg-black/80 backdrop-blur-md border border-white/10 px-7 py-6">
         {/* Header label */}
         <div className="flex items-center justify-between mb-3">
           <span className="text-[7px] uppercase tracking-[0.5em] text-white/20">ciel noir /// nuance</span>
