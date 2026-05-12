@@ -61,6 +61,21 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* SoundCloud Player — bottom center vignette */}
+      <div className="absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-40 w-[320px] md:w-[420px]">
+        <div className="bg-black/70 backdrop-blur-md border border-white/10 px-3 pt-2 pb-1 rounded-sm">
+          <p className="text-[8px] uppercase tracking-[0.35em] text-white/20 mb-1 pl-1">ciel noir /// stream</p>
+          <iframe
+            width="100%"
+            height="20"
+            scrolling="no"
+            frameBorder={0}
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/cyprien_nuance/sets/ciel-noir&color=%23ffffff&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false"
+          />
+        </div>
+      </div>
+
       {/* Bottom decorative line */}
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
     </section>
