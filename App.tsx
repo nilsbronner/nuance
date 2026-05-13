@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Hero from './components/Hero';
 import BandSection from './components/BandSection';
 import Footer from './components/Footer';
@@ -11,6 +11,79 @@ import bgStreaming from './src/assets/images/regenerated_image_1778250333183.jpg
 import bgArchives from './src/assets/images/regenerated_image_1778250334116.jpg';
 import bgAgenda from './src/assets/images/regenerated_image_1778250335159.jpg';
 import bgConnect from './src/assets/images/regenerated_image_1778250335974.jpg';
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  duration: string;
+  thumbnail: string;
+  vimeoId: string;
+}
+
+const GalleryScroll: React.FC<{ items: GalleryItem[]; onPlay: (id: string) => void }> = ({ items, onPlay }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const amount = scrollRef.current.clientWidth * 0.75;
+    scrollRef.current.scrollBy({ left: dir === 'right' ? amount : -amount, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="relative group/gallery">
+      {/* Scroll buttons */}
+      <button
+        onClick={() => scroll('left')}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black -translate-x-1/2"
+        aria-label="précédent"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => scroll('right')}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black translate-x-1/2"
+        aria-label="suivant"
+      >
+        ›
+      </button>
+
+      {/* Fade edges */}
+      <div className="absolute left-0 top-0 bottom-4 w-12 bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+
+      {/* Scrollable track */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar"
+        style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+      >
+        {items.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => onPlay(item.vimeoId)}
+            className="flex-none w-[280px] md:w-[420px] aspect-video relative snap-start cursor-pointer group/item overflow-hidden border border-white/5 shrink-0"
+          >
+            <img
+              src={item.thumbnail}
+              alt={item.title}
+              className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-70 group-hover/item:opacity-90 transition-opacity" />
+            <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-7 h-7 rounded-full border border-white/80 flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-[3px] border-t-transparent border-l-[6px] border-l-white border-b-[3px] border-b-transparent ml-0.5" />
+                </div>
+                <span className="text-[10px] font-bold lowercase tracking-widest opacity-50">{item.duration}</span>
+              </div>
+              <h5 className="text-base md:text-lg font-bold lowercase tracking-tighter leading-tight">{item.title}</h5>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -230,38 +303,7 @@ const App: React.FC = () => {
                   </a>
                 </div>
 
-                <div className="relative group/gallery">
-                  <div className="flex gap-4 overflow-x-auto pb-4 md:pb-8 snap-x no-scrollbar">
-                    {collection.items.map((item) => (
-                      <motion.div 
-                        key={item.id}
-                        whileHover={{ scale: 1.05, zIndex: 10 }}
-                        onClick={() => setActiveVideoId(item.vimeoId)}
-                        className="flex-none w-[280px] md:w-[450px] aspect-video relative snap-start cursor-pointer group/item overflow-hidden border border-white/5"
-                      >
-                        <img 
-                          src={item.thumbnail} 
-                          alt={item.title}
-                          className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover/item:opacity-90 transition-opacity"></div>
-                        
-                        <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6 translate-y-4 group-hover/item:translate-y-0 transition-transform duration-500">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 rounded-full border border-white flex items-center justify-center">
-                              <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[7px] border-l-white border-b-[4px] border-b-transparent ml-0.5"></div>
-                            </div>
-                            <span className="text-[11px] font-bold lowercase tracking-widest opacity-60">{item.duration}</span>
-                          </div>
-                          <h5 className="text-xl md:text-2xl font-bold lowercase tracking-tighter">{item.title}</h5>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  {/* Visual cues for scrolling */}
-                  <div className="absolute right-0 top-0 bottom-4 md:bottom-8 w-16 md:w-32 bg-gradient-to-l from-black to-transparent pointer-events-none opacity-0 group-hover/gallery:opacity-100 transition-opacity"></div>
-                </div>
+                <GalleryScroll items={collection.items} onPlay={setActiveVideoId} />
               </div>
             ))}
 
