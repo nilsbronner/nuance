@@ -30,18 +30,18 @@ const GalleryScroll: React.FC<{ items: GalleryItem[]; onPlay: (id: string) => vo
   };
 
   return (
-    <div className="relative group/gallery">
+    <div className="relative group/gallery overflow-hidden">
       {/* Scroll buttons */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black -translate-x-1/2"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black"
         aria-label="précédent"
       >
         ‹
       </button>
       <button
         onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black translate-x-1/2"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/70 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/gallery:opacity-100 transition-opacity hover:bg-white hover:text-black"
         aria-label="suivant"
       >
         ›
