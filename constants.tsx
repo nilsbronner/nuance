@@ -5,6 +5,15 @@ export const PRESS_KIT_URL = "https://drive.google.com/file/d/16-HcoE1XkfvUefWXl
 
 export const EVENTS: Event[] = [
   {
+    id: 'e0',
+    title: 'checkpoint — soirée gaming',
+    date: '11.06.26',
+    location: 'bar du quai de scène, 5 quai du général koenig, strasbourg',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1000',
+    description: 'soirée gaming & esports — smash bros, mario kart, tekken, dj set. entrée gratuite. happy hour 17h–20h.',
+    type: 'upcoming'
+  },
+  {
     id: 'e1',
     title: 'allons ranger la forêt du neuhof !',
     date: '20.06.26',
