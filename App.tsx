@@ -233,14 +233,6 @@ const App: React.FC = () => {
                   <span>pirate archive</span>
                </div>
             </div>
-            <div className="lg:col-span-4 border border-white/10 p-6 md:p-8 flex flex-col justify-end bg-texture/5 aspect-square lg:aspect-auto min-h-[250px] lg:min-h-0">
-               <span className="text-[11px] lowercase font-bold tracking-widest block mb-4 opacity-50">signal source</span>
-               <p className="text-[11px] lowercase tracking-widest leading-loose text-white/40">
-                 collectif culturel <br/>
-                 strasbourg /// fr <br/>
-                 depuis 2019
-               </p>
-            </div>
           </div>
         </BandSection>
 
