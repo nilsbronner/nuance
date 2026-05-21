@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       {/* Navigation shortcuts */}
       <div className="absolute bottom-8 md:bottom-12 w-full max-w-7xl flex flex-col md:flex-row justify-between items-start md:items-end px-6 md:px-12 gap-8 md:gap-8 z-30">
         <div className="flex flex-col items-start gap-1 border-l border-white/10 pl-4 md:pl-6">
-          <span className="text-[10px] md:text-[14px] lowercase tracking-widest font-medium opacity-40">prochain signal</span>
+          <span className="text-[10px] md:text-[14px] lowercase tracking-widest font-medium opacity-40">prochain événement</span>
           <span className="text-[11px] md:text-[17px] lowercase font-bold tracking-tight text-white/50">20.06.26 /// forêt du neuhof</span>
         </div>
 
