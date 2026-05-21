@@ -280,22 +280,15 @@ const App: React.FC = () => {
           <div className="space-y-16 md:space-y-32">
             {ARCHIVE_COLLECTIONS.map((collection) => (
               <div key={collection.id} className="space-y-6 md:space-y-8">
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between px-2 gap-6sm:gap-0">
-                  <div className="space-y-2">
-                    <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">{collection.title}</h4>
-                    <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">{collection.description}</p>
-                  </div>
-                  <a 
-                    href={collection.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-[11px] font-bold lowercase tracking-widest border border-white/10 px-6 py-2 hover:bg-white hover:text-black transition-all self-start sm:self-auto"
-                  >
-                    tout voir
-                  </a>
+                <div className="space-y-2 px-2">
+                  <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">{collection.title}</h4>
+                  <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">{collection.description}</p>
                 </div>
 
-                <GalleryScroll items={collection.items} onPlay={setActiveVideoId} />
+                {/* Full-bleed gallery */}
+                <div className="relative w-screen left-1/2 -translate-x-1/2">
+                  <GalleryScroll items={collection.items} onPlay={setActiveVideoId} />
+                </div>
               </div>
             ))}
 

@@ -69,7 +69,7 @@ const BandSection: React.FC<BandSectionProps> = ({
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="bg-[#000] band-shadow"
           >
-            <div className="px-6 md:px-12 py-12 md:py-24 max-w-7xl mx-auto border-l border-white/5 ml-4 md:ml-12 overflow-hidden">
+            <div className="px-6 md:px-12 py-12 md:py-24 max-w-7xl mx-auto border-l border-white/5 ml-4 md:ml-12">
               {children}
             </div>
             <div className="h-px w-full bg-white/5"></div>
