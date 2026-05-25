@@ -111,7 +111,17 @@ const App: React.FC = () => {
   };
 
   const toggleSection = (id: string) => {
-    setOpenSectionId(openSectionId === id ? null : id);
+    const isOpening = openSectionId !== id;
+    setOpenSectionId(isOpening ? id : null);
+    if (isOpening) {
+      // Attend que l'animation commence, puis scroll pour voir le contenu
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 80);
+    }
   };
 
   const menuItems = ['vision', 'streaming', 'archives', 'agenda', 'connect'];
