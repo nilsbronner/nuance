@@ -336,23 +336,34 @@ const App: React.FC = () => {
           bgImage={bgAgenda}
         >
           <div className="space-y-1">
-            {EVENTS.map((event) => (
-              <div key={event.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-8 md:py-12 px-2 md:px-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
-                 <div className="md:col-span-2 flex flex-col font-bold">
+            {/* Message de remerciement si tous les events sont passés */}
+            {EVENTS.every(e => e.type === 'past') && (
+              <div className="py-8 md:py-10 px-2 md:px-6 mb-4 border-l-2 border-white/20 pl-6">
+                <p className="text-[11px] lowercase tracking-[0.4em] text-white/40 font-bold">/// merci à toutes et à tous</p>
+                <p className="text-white/20 text-[10px] lowercase tracking-widest mt-1">chaque édition existe grâce à vous — à très bientôt.</p>
+              </div>
+            )}
+            {EVENTS.map((event) => {
+              const isPast = event.type === 'past';
+              return (
+                <div key={event.id} className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-8 md:py-12 px-2 md:px-6 border-b border-white/5 transition-colors group ${isPast ? 'opacity-40 hover:opacity-60' : 'hover:bg-white/[0.02]'}`}>
+                  <div className="md:col-span-2 flex flex-col font-bold">
                     <span className="text-3xl md:text-4xl tracking-tighter">{event.date.split('.')[0]}.{event.date.split('.')[1]}</span>
                     <span className="text-[10px] md:text-[11px] lowercase tracking-widest opacity-30">20{event.date.split('.')[2]}</span>
-                 </div>
-                 <div className="md:col-span-7">
-                    <h4 className="text-2xl md:text-4xl font-bold lowercase tracking-tighter mb-2 md:mb-4">{event.title}</h4>
+                    {isPast && <span className="text-[8px] uppercase tracking-[0.4em] text-white/30 mt-1">passé</span>}
+                  </div>
+                  <div className="md:col-span-7">
+                    <h4 className={`text-2xl md:text-4xl font-bold lowercase tracking-tighter mb-2 md:mb-4 ${isPast ? 'line-through decoration-white/20' : ''}`}>{event.title}</h4>
                     <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] font-medium text-white/30">{event.location}</p>
-                 </div>
-                 <div className="md:col-span-3 flex flex-col justify-center">
+                  </div>
+                  <div className="md:col-span-3 flex flex-col justify-center">
                     <p className="text-[10px] md:text-[11px] font-bold lowercase tracking-tight text-white/30 italic group-hover:text-white/60 transition-colors">
                       {event.description}
                     </p>
-                 </div>
-              </div>
-            ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </BandSection>
 

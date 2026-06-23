@@ -11,7 +11,7 @@ export const EVENTS: Event[] = [
     location: 'bar du quai de scène, 5 quai du général koenig, strasbourg',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1000',
     description: 'soirée gaming & esports — smash bros, mario kart, tekken, dj set. entrée gratuite. happy hour 17h–20h.',
-    type: 'upcoming'
+    type: 'past'
   },
   {
     id: 'e1',
@@ -20,7 +20,7 @@ export const EVENTS: Event[] = [
     location: '184 rue du rhin tortu, strasbourg',
     image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1000',
     description: 'rassemblement bénévole pour le nettoyage de la forêt. gants et sacs fournis.',
-    type: 'upcoming'
+    type: 'past'
   },
   {
     id: 'e2',
@@ -29,7 +29,7 @@ export const EVENTS: Event[] = [
     location: 'parc gruber, koenigshoffen',
     image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
     description: "dj sets, lives, ateliers, stands, vinyles d'occasion, fripes.",
-    type: 'upcoming'
+    type: 'past'
   }
 ];
 
