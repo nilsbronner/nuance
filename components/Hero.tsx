@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import coverImage from '../src/assets/images/cover.jpg.png';
+import coverImage from '../src/assets/images/cover-new.png';
 import SoundCloudPlayer from './SoundCloudPlayer';
 
 const Hero: React.FC = () => {
