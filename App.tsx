@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Hero from './components/Hero';
 import BandSection from './components/BandSection';
 import Footer from './components/Footer';
-import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS } from './constants';
+import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASE } from './constants';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import bgVision from './src/assets/images/regenerated_image_1778250332433.jpg';
@@ -276,10 +276,37 @@ const App: React.FC = () => {
               </a>
             ))}
           </div>
+
+          {/* Release label */}
+          <div className="mt-16 md:mt-24 border-t border-white/5 pt-12 md:pt-16">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-16">
+              <div className="space-y-4 md:w-1/2">
+                <span className="text-[9px] uppercase tracking-[0.5em] text-white/20 font-bold block">/// label release</span>
+                <h3 className="text-4xl md:text-6xl font-bold lowercase tracking-tighter leading-none">
+                  {LABEL_RELEASE.title}
+                </h3>
+                <div className="flex gap-6 pt-2 text-[10px] uppercase tracking-[0.4em] text-white/30 font-bold">
+                  <span>[{LABEL_RELEASE.catalog}]</span>
+                  <span>{LABEL_RELEASE.date}</span>
+                  <span>{LABEL_RELEASE.label}</span>
+                </div>
+                <p className="text-[10px] lowercase tracking-widest text-white/20 pt-2">artwork — {LABEL_RELEASE.artwork}</p>
+              </div>
+              <div className="md:w-1/2 space-y-0">
+                {LABEL_RELEASE.tracklist.map((track, i) => (
+                  <div key={i} className="flex items-baseline gap-4 py-3 border-b border-white/5 group hover:border-white/20 transition-colors">
+                    <span className="text-[9px] text-white/20 font-bold w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="text-[11px] font-bold lowercase tracking-widest text-white/60 group-hover:text-white transition-colors">{track.artist}</span>
+                    <span className="text-[10px] lowercase tracking-widest text-white/25 italic ml-auto">{track.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </BandSection>
 
-        <BandSection 
-          index={2} 
+        <BandSection
+          index={2}
           id="archives" 
           title="archives" 
           isOpen={openSectionId === 'archives'}
@@ -336,34 +363,44 @@ const App: React.FC = () => {
           bgImage={bgAgenda}
         >
           <div className="space-y-1">
-            {/* Message de remerciement si tous les events sont passés */}
-            {EVENTS.every(e => e.type === 'past') && (
-              <div className="py-8 md:py-10 px-2 md:px-6 mb-4 border-l-2 border-white/20 pl-6">
-                <p className="text-[11px] lowercase tracking-[0.4em] text-white/40 font-bold">/// merci à toutes et à tous</p>
-                <p className="text-white/20 text-[10px] lowercase tracking-widest mt-1">chaque édition existe grâce à vous — à très bientôt.</p>
+            {/* Upcoming events */}
+            {EVENTS.filter(e => e.type === 'upcoming').map((event) => (
+              <div key={event.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-8 md:py-12 px-2 md:px-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+                <div className="md:col-span-2 flex flex-col font-bold">
+                  <span className="text-3xl md:text-4xl tracking-tighter">{event.date.split('.')[0]}.{event.date.split('.')[1]}</span>
+                  <span className="text-[10px] md:text-[11px] lowercase tracking-widest opacity-30">20{event.date.split('.')[2]}</span>
+                </div>
+                <div className="md:col-span-7">
+                  <h4 className="text-2xl md:text-4xl font-bold lowercase tracking-tighter mb-2 md:mb-4">{event.title}</h4>
+                  <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] font-medium text-white/30">{event.location}</p>
+                </div>
+                <div className="md:col-span-3 flex flex-col justify-center">
+                  <p className="text-[10px] md:text-[11px] font-bold lowercase tracking-tight text-white/30 italic group-hover:text-white/60 transition-colors">
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+
+            {/* Past events */}
+            {EVENTS.filter(e => e.type === 'past').length > 0 && (
+              <div className="mt-12 md:mt-16 pt-8 border-t border-white/5">
+                <p className="text-[9px] uppercase tracking-[0.5em] text-white/20 font-bold mb-6 px-2 md:px-6">/// merci à toutes et à tous — chaque édition existe grâce à vous</p>
+                {EVENTS.filter(e => e.type === 'past').map((event) => (
+                  <div key={event.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-6 md:py-8 px-2 md:px-6 border-b border-white/5 opacity-30">
+                    <div className="md:col-span-2 flex flex-col font-bold">
+                      <span className="text-2xl md:text-3xl tracking-tighter">{event.date.split('.')[0]}.{event.date.split('.')[1]}</span>
+                      <span className="text-[9px] uppercase tracking-[0.4em] text-white/30 mt-1">passé</span>
+                    </div>
+                    <div className="md:col-span-7">
+                      <h4 className="text-xl md:text-2xl font-bold lowercase tracking-tighter mb-1 line-through decoration-white/20">{event.title}</h4>
+                      <p className="text-[10px] lowercase tracking-widest text-white/30">{event.location}</p>
+                    </div>
+                    <div className="md:col-span-3" />
+                  </div>
+                ))}
               </div>
             )}
-            {EVENTS.map((event) => {
-              const isPast = event.type === 'past';
-              return (
-                <div key={event.id} className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-8 md:py-12 px-2 md:px-6 border-b border-white/5 transition-colors group ${isPast ? 'opacity-40 hover:opacity-60' : 'hover:bg-white/[0.02]'}`}>
-                  <div className="md:col-span-2 flex flex-col font-bold">
-                    <span className="text-3xl md:text-4xl tracking-tighter">{event.date.split('.')[0]}.{event.date.split('.')[1]}</span>
-                    <span className="text-[10px] md:text-[11px] lowercase tracking-widest opacity-30">20{event.date.split('.')[2]}</span>
-                    {isPast && <span className="text-[8px] uppercase tracking-[0.4em] text-white/30 mt-1">passé</span>}
-                  </div>
-                  <div className="md:col-span-7">
-                    <h4 className={`text-2xl md:text-4xl font-bold lowercase tracking-tighter mb-2 md:mb-4 ${isPast ? 'line-through decoration-white/20' : ''}`}>{event.title}</h4>
-                    <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] font-medium text-white/30">{event.location}</p>
-                  </div>
-                  <div className="md:col-span-3 flex flex-col justify-center">
-                    <p className="text-[10px] md:text-[11px] font-bold lowercase tracking-tight text-white/30 italic group-hover:text-white/60 transition-colors">
-                      {event.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </BandSection>
 

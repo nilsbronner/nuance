@@ -3,7 +3,43 @@ import { Event, Livestream, Podcast, SocialLink } from './types';
 
 export const PRESS_KIT_URL = "https://drive.google.com/file/d/16-HcoE1XkfvUefWXldoZ92tmC2xyJlOE/view?usp=drivesdk";
 
+export const LABEL_RELEASE = {
+  catalog: 'TOT001',
+  title: 'the truth is out there',
+  label: 'nuance recording',
+  date: '18.11.2026',
+  artwork: '@bertanoezsoy',
+  tracklist: [
+    { artist: 'letherique', title: 'la commedia' },
+    { artist: 'shaed', title: 'pantone 808' },
+    { artist: 'shônagon', title: 'you got it' },
+    { artist: 'liema', title: 'grizzly' },
+    { artist: 'cyprien noiriel', title: 'transmission' },
+    { artist: 'd2000p', title: 'agent 13' },
+    { artist: 'crash server', title: 'x runs' },
+    { artist: 'ralt144mi', title: 'euclidean sports resort' },
+  ]
+};
+
 export const EVENTS: Event[] = [
+  {
+    id: 'e3',
+    title: 'release party — the truth is out there',
+    date: '05.12.26',
+    location: 'secret place, strasbourg',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
+    description: 'release party [TOT001] nuance recording. secret place strasbourg.',
+    type: 'upcoming'
+  },
+  {
+    id: 'e4',
+    title: 'release party — the truth is out there',
+    date: '20.11.26',
+    location: 'vault club, mulhouse',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
+    description: 'release party [TOT001] nuance recording. vault club mulhouse.',
+    type: 'upcoming'
+  },
   {
     id: 'e0',
     title: 'checkpoint — soirée gaming',
