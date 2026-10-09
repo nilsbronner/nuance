@@ -6,7 +6,15 @@ import SoundCloudPlayer from './SoundCloudPlayer';
 import { EVENTS } from '../constants';
 
 const Hero: React.FC = () => {
-  const nextEvent = EVENTS.filter(e => e.type === 'upcoming')[0];
+  const nextEvent = EVENTS
+    .filter(e => e.type === 'upcoming')
+    .sort((a, b) => {
+      const parse = (d: string) => {
+        const [day, month, year] = d.split('.');
+        return new Date(2000 + parseInt(year), parseInt(month) - 1, parseInt(day)).getTime();
+      };
+      return parse(a.date) - parse(b.date);
+    })[0];
 
   return (
     <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
