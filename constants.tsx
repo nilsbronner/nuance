@@ -15,6 +15,18 @@ export const MIXTAPES = [
   // ajouter des sorties spécifiques ici pour les mettre en avant individuellement
 ];
 
+export const RELEASES = [
+  {
+    id: 'r1',
+    title: 'ciel noir',
+    artist: 'cyprien noiriel',
+    date: '2026',
+    catalog: null,
+    scUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
+  },
+  // ajouter chaque album ici — apparaît automatiquement dans archives
+];
+
 export const LABEL_RELEASE = {
   catalog: 'TOT001',
   title: 'the truth is out there',

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Hero from './components/Hero';
 import BandSection from './components/BandSection';
 import Footer from './components/Footer';
-import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASE } from './constants';
+import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASE, RELEASES } from './constants';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import bgVision from './src/assets/images/regenerated_image_1778250332433.jpg';
@@ -328,6 +328,40 @@ const App: React.FC = () => {
                 </div>
               </div>
             ))}
+
+            {/* Sorties audio */}
+            {RELEASES.length > 0 && (
+              <div className="space-y-6 md:space-y-8">
+                <div className="space-y-2 px-2">
+                  <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">Releases_</h4>
+                  <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">sorties audio / soundcloud.</p>
+                </div>
+                <div className="flex flex-wrap gap-px bg-white/5">
+                  {RELEASES.map((release) => (
+                    <a
+                      key={release.id}
+                      href={release.scUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-black flex-none w-[200px] md:w-[260px] p-6 md:p-8 flex flex-col justify-between aspect-square group hover:bg-white transition-all duration-500 border-r border-b border-white/5"
+                    >
+                      <div className="flex flex-col gap-2">
+                        {release.catalog && (
+                          <span className="text-[8px] uppercase tracking-[0.4em] text-white/20 group-hover:text-black/40 transition-colors font-bold">[{release.catalog}]</span>
+                        )}
+                        <h5 className="text-xl md:text-2xl font-bold lowercase tracking-tighter leading-tight group-hover:text-black transition-colors">
+                          {release.title}
+                        </h5>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[10px] lowercase tracking-widest text-white/40 group-hover:text-black/50 transition-colors font-medium">{release.artist}</span>
+                        <span className="text-[9px] lowercase tracking-[0.3em] text-white/20 group-hover:text-black/30 transition-colors">{release.date} /// soundcloud ↗</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {LIVESTREAMS.length > 0 && (
               <div className="pt-12 md:pt-20 border-t border-white/5">
