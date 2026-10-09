@@ -10,7 +10,7 @@ export const MIXTAPES = [
     artist: 'nuance',
     date: '2026-01-01',
     scUrl: 'https://soundcloud.com/nuancestudio',
-    scEmbedUrl: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1126781239&auto_play=true&visual=false&show_artwork=false&buying=false&liking=false&download=false&sharing=false&show_comments=false&show_reposts=false&show_teaser=false',
+    scEmbedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/nuancestudio&auto_play=true&visual=false&show_artwork=false&buying=false&liking=false&download=false&sharing=false&show_comments=false&show_reposts=false&show_teaser=false',
   },
   // ajouter des sorties spécifiques ici pour les mettre en avant individuellement
 ];
