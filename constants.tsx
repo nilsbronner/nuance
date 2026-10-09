@@ -1,7 +1,7 @@
 
 import { Event, Livestream, Podcast, SocialLink } from './types';
 
-export const PRESS_KIT_URL = "https://drive.google.com/file/d/16-HcoE1XkfvUefWXldoZ92tmC2xyJlOE/view?usp=drivesdk";
+export const PRESS_KIT_URL = "https://drive.google.com/file/d/1PTl3Q23ZzlNUY0Y4ykZFHc0MnZrslq45/view?usp=sharing";
 
 export const MIXTAPES = [
   {

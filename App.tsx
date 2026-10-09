@@ -336,14 +336,14 @@ const App: React.FC = () => {
                   <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">Releases_</h4>
                   <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">sorties audio / soundcloud.</p>
                 </div>
-                <div className="flex flex-wrap gap-px bg-white/5">
+                <div className="flex gap-px overflow-x-auto no-scrollbar pb-2">
                   {RELEASES.map((release) => (
                     <a
                       key={release.id}
                       href={release.scUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-black flex-none w-[200px] md:w-[260px] p-6 md:p-8 flex flex-col justify-between aspect-square group hover:bg-white transition-all duration-500 border-r border-b border-white/5"
+                      className="bg-black flex-none w-[180px] md:w-[240px] p-6 md:p-8 flex flex-col justify-between aspect-square group hover:bg-white transition-all duration-500 border border-white/5"
                     >
                       <div className="flex flex-col gap-2">
                         {release.catalog && (
