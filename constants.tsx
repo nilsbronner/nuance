@@ -29,7 +29,8 @@ export const EVENTS: Event[] = [
     location: 'secret place, strasbourg',
     image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
     description: 'release party [TOT001] nuance recording. secret place strasbourg.',
-    type: 'upcoming'
+    type: 'upcoming',
+    ticketUrl: 'https://fr.ra.co/events/2553089'
   },
   {
     id: 'e4',

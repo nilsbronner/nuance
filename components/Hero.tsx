@@ -3,8 +3,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import coverImage from '../src/assets/images/cover-hq-1.png';
 import SoundCloudPlayer from './SoundCloudPlayer';
+import { EVENTS } from '../constants';
 
 const Hero: React.FC = () => {
+  const nextEvent = EVENTS.filter(e => e.type === 'upcoming')[0];
+
   return (
     <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
       {/* Background Effect */}
@@ -39,7 +42,13 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-8 md:bottom-12 w-full max-w-7xl flex flex-col md:flex-row justify-between items-start md:items-end px-6 md:px-12 gap-8 md:gap-8 z-30">
         <div className="flex flex-col items-start gap-1 border-l border-white/10 pl-4 md:pl-6">
           <span className="text-[10px] md:text-[14px] lowercase tracking-widest font-medium opacity-40">prochain événement</span>
-          <span className="text-[11px] md:text-[17px] lowercase font-bold tracking-tight text-white/50">20.06.26 /// forêt du neuhof</span>
+          {nextEvent ? (
+            <span className="text-[11px] md:text-[17px] lowercase font-bold tracking-tight text-white/50">
+              {nextEvent.date} /// {nextEvent.location}
+            </span>
+          ) : (
+            <span className="text-[11px] md:text-[17px] lowercase font-bold tracking-tight text-white/30 italic">à venir</span>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-4 md:gap-10">

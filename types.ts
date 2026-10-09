@@ -7,6 +7,7 @@ export interface Event {
   image: string;
   description: string;
   type: 'upcoming' | 'past';
+  ticketUrl?: string;
 }
 
 export interface Livestream {

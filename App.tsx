@@ -374,10 +374,21 @@ const App: React.FC = () => {
                   <h4 className="text-2xl md:text-4xl font-bold lowercase tracking-tighter mb-2 md:mb-4">{event.title}</h4>
                   <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] font-medium text-white/30">{event.location}</p>
                 </div>
-                <div className="md:col-span-3 flex flex-col justify-center">
+                <div className="md:col-span-3 flex flex-col justify-center gap-3">
                   <p className="text-[10px] md:text-[11px] font-bold lowercase tracking-tight text-white/30 italic group-hover:text-white/60 transition-colors">
                     {event.description}
                   </p>
+                  {event.ticketUrl && (
+                    <a
+                      href={event.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="self-start text-[9px] font-bold lowercase tracking-[0.4em] border border-white/20 px-3 py-1.5 hover:bg-white hover:text-black transition-all"
+                    >
+                      billetterie →
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
