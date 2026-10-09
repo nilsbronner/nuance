@@ -1,11 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import coverImage from '../src/assets/images/compilation-cover.jpg';
 import SoundCloudPlayer from './SoundCloudPlayer';
-import { EVENTS } from '../constants';
+import { EVENTS, MIXTAPES } from '../constants';
 
 const Hero: React.FC = () => {
+  const [selectedMixtapeIdx, setSelectedMixtapeIdx] = useState(0);
+  const currentMixtape = MIXTAPES[selectedMixtapeIdx];
+
   const nextEvent = EVENTS
     .filter(e => e.type === 'upcoming')
     .sort((a, b) => {
@@ -79,9 +82,32 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* SoundCloud Player — custom DA */}
-      <div className="absolute bottom-32 md:bottom-36 left-1/2 -translate-x-1/2 z-40">
-        <SoundCloudPlayer />
+      {/* SoundCloud Player + actus strip */}
+      <div className="absolute bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3">
+        <SoundCloudPlayer
+          key={currentMixtape.id}
+          title={currentMixtape.title}
+          artist={currentMixtape.artist}
+          scEmbedUrl={currentMixtape.scEmbedUrl}
+        />
+        {/* Actus — sélecteur de sorties */}
+        {MIXTAPES.length > 1 && (
+          <div className="flex gap-2 flex-wrap justify-center">
+            {MIXTAPES.map((m, i) => (
+              <button
+                key={m.id}
+                onClick={() => setSelectedMixtapeIdx(i)}
+                className={`text-[8px] uppercase tracking-[0.3em] px-3 py-1.5 border transition-all ${
+                  selectedMixtapeIdx === i
+                    ? 'border-white/40 text-white bg-white/5'
+                    : 'border-white/10 text-white/30 hover:border-white/30 hover:text-white/60'
+                }`}
+              >
+                {m.title} — {m.artist}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Bottom decorative line */}

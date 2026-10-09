@@ -3,6 +3,18 @@ import { Event, Livestream, Podcast, SocialLink } from './types';
 
 export const PRESS_KIT_URL = "https://drive.google.com/file/d/16-HcoE1XkfvUefWXldoZ92tmC2xyJlOE/view?usp=drivesdk";
 
+export const MIXTAPES = [
+  {
+    id: 'm1',
+    title: 'ciel noir',
+    artist: 'cyprien noiriel',
+    date: '2026-09-01',
+    scUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
+    scEmbedUrl: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/cyprien_nuance/sets/ciel-noir&auto_play=true&visual=false&show_artwork=false&buying=false&liking=false&download=false&sharing=false&show_comments=false&show_reposts=false&show_teaser=false',
+  },
+  // ajouter les prochaines sorties ici — elles s'affichent automatiquement
+];
+
 export const LABEL_RELEASE = {
   catalog: 'TOT001',
   title: 'the truth is out there',
