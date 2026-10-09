@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import coverImage from '../src/assets/images/cover-hq-1.png';
+import coverImage from '../src/assets/images/compilation-cover.jpg';
 import SoundCloudPlayer from './SoundCloudPlayer';
 import { EVENTS } from '../constants';
 
