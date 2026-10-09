@@ -17,14 +17,54 @@ export const MIXTAPES = [
 
 export const RELEASES = [
   {
+    id: 'r-nms005',
+    title: 'mixtape series 005',
+    artist: 'kat',
+    date: '2026',
+    catalog: 'NMS005',
+    scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-005-w',
+  },
+  {
+    id: 'r-nms004',
+    title: 'mixtape series 004',
+    artist: 'jovan grujić',
+    date: '2026',
+    catalog: 'NMS004',
+    scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-w-jovan',
+  },
+  {
+    id: 'r-nms003',
+    title: 'mixtape series 003',
+    artist: 'sef:d',
+    date: '2026',
+    catalog: 'NMS003',
+    scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-003-w',
+  },
+  {
+    id: 'r-nms002',
+    title: 'mixtape series 002',
+    artist: 'lu:kə',
+    date: '2026',
+    catalog: 'NMS002',
+    scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-002-w-lu',
+  },
+  {
+    id: 'r-nms001',
+    title: 'mixtape series 001',
+    artist: 'liema',
+    date: '2026',
+    catalog: 'NMS001',
+    scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-001-w',
+  },
+  {
     id: 'r1',
     title: 'ciel noir',
     artist: 'cyprien noiriel',
     date: '2026',
-    catalog: null,
+    catalog: 'NUR001',
     scUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
   },
-  // ajouter chaque album ici — apparaît automatiquement dans archives
+  // ajouter chaque nouvelle sortie ici — apparaît automatiquement dans archives
 ];
 
 export const LABEL_RELEASE = {
