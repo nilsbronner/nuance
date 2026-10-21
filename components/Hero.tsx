@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
     })[0];
 
   return (
-    <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
+    <section id="hero" className="relative h-screen h-dvh w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
       {/* Background Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Cover image — portrait on mobile, square on desktop */}
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* SoundCloud Player + actus strip */}
-      <div className="absolute bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3">
+      <div className="absolute bottom-40 md:bottom-32 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3">
         <SoundCloudPlayer
           key={currentMixtape.id}
           title={currentMixtape.title}
