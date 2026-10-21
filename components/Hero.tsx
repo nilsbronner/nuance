@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import coverImage from '../src/assets/images/compilation-cover.jpg';
+import coverMobile from '../src/assets/images/compilation-cover-mobile.webp';
 import SoundCloudPlayer from './SoundCloudPlayer';
 import { EVENTS, MIXTAPES } from '../constants';
 
@@ -23,11 +24,16 @@ const Hero: React.FC = () => {
     <section id="hero" className="relative h-screen w-full flex flex-col items-center justify-center bg-black overflow-hidden px-6">
       {/* Background Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Cover image */}
+        {/* Cover image — portrait on mobile, square on desktop */}
         <img
           src={coverImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.35]"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.35] hidden md:block"
+        />
+        <img
+          src={coverMobile}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-top brightness-[0.45] block md:hidden"
         />
 
         {/* Top/bottom gradient */}
