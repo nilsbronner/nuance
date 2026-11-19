@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Hero from './components/Hero';
 import BandSection from './components/BandSection';
 import Footer from './components/Footer';
-import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASES, RELEASES, CHARTE } from './constants';
+import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASES, ARCHIVE_MIXTAPES, CHARTE } from './constants';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import bgVision from './src/assets/images/regenerated_image_1778250332433.jpg';
@@ -302,6 +302,7 @@ const App: React.FC = () => {
                       {release.description}
                     </p>
 
+                    <div className="flex flex-wrap gap-3">
                     <a
                       href={release.bandcampUrl}
                       target="_blank"
@@ -310,6 +311,17 @@ const App: React.FC = () => {
                     >
                       acheter sur bandcamp <span aria-hidden="true">↗</span>
                     </a>
+                    {release.soundcloudUrl && (
+                      <a
+                        href={release.soundcloudUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 text-[11px] md:text-[12px] font-bold lowercase tracking-[0.3em] border border-white/20 px-6 py-4 hover:bg-white hover:text-black transition-all"
+                      >
+                        écouter sur soundcloud <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    </div>
 
                     {/* Tracklist */}
                     <div className="space-y-4">
@@ -412,15 +424,15 @@ const App: React.FC = () => {
               </div>
             ))}
 
-            {/* Sorties audio */}
-            {RELEASES.length > 0 && (
+            {/* Mixtapes soundcloud */}
+            {ARCHIVE_MIXTAPES.length > 0 && (
               <div className="space-y-6 md:space-y-8">
                 <div className="space-y-2 px-2">
-                  <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">Releases_</h4>
-                  <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">sorties audio / soundcloud.</p>
+                  <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter">Mixtapes_</h4>
+                  <p className="text-[10px] md:text-[11px] lowercase tracking-[0.3em] md:tracking-[0.4em] text-white/40 font-medium">nuance mixtape series / soundcloud.</p>
                 </div>
                 <div className="flex gap-px overflow-x-auto no-scrollbar pb-2">
-                  {RELEASES.map((release) => (
+                  {ARCHIVE_MIXTAPES.map((release) => (
                     <a
                       key={release.id}
                       href={release.scUrl}

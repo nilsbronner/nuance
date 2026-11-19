@@ -17,7 +17,9 @@ export const MIXTAPES = [
   // ajouter des sorties spécifiques ici pour les mettre en avant individuellement
 ];
 
-export const RELEASES = [
+// mixtapes soundcloud — apparaissent dans archives > mixtapes_
+// (les sorties du label vont dans LABEL_RELEASES, section releases)
+export const ARCHIVE_MIXTAPES = [
   {
     id: 'r-nms005',
     title: 'mixtape series 005',
@@ -58,15 +60,7 @@ export const RELEASES = [
     catalog: 'NMS001',
     scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-001-w',
   },
-  {
-    id: 'r1',
-    title: 'ciel noir',
-    artist: 'cyprien noiriel',
-    date: '2026',
-    catalog: 'NUR001',
-    scUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
-  },
-  // ajouter chaque nouvelle sortie ici — apparaît automatiquement dans archives
+  // ajouter chaque nouvelle mixtape ici — apparaît automatiquement dans archives
 ];
 
 // sorties du label nuance recording — catégorie "releases"
@@ -128,6 +122,7 @@ export const LABEL_RELEASES: LabelRelease[] = [
       { role: 'manufactured by', name: 'B Side' },
     ],
     bandcampUrl: 'https://nuancerecording.bandcamp.com/album/nur001-ciel-noir-cyprien-noiriel',
+    soundcloudUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
   },
 ];
 

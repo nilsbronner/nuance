@@ -48,6 +48,7 @@ export interface LabelRelease {
   tracklist: LabelReleaseTrack[];
   credits: { role: string; name: string }[];
   bandcampUrl: string;
+  soundcloudUrl?: string;
 }
 
 export interface SocialLink {
