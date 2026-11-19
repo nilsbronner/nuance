@@ -1,5 +1,7 @@
 
-import { Event, Livestream, Podcast, SocialLink } from './types';
+import { Event, LabelRelease, Livestream, Podcast, SocialLink } from './types';
+import coverTot001 from './src/assets/images/compilation-cover.jpg';
+import coverNur001 from './src/assets/images/releases/nur001-ciel-noir.jpg';
 
 export const PRESS_KIT_URL = "https://drive.google.com/file/d/1PTl3Q23ZzlNUY0Y4ykZFHc0MnZrslq45/view?usp=sharing";
 
@@ -15,7 +17,9 @@ export const MIXTAPES = [
   // ajouter des sorties spécifiques ici pour les mettre en avant individuellement
 ];
 
-export const RELEASES = [
+// mixtapes soundcloud — apparaissent dans archives > mixtapes_
+// (les sorties du label vont dans LABEL_RELEASES, section releases)
+export const ARCHIVE_MIXTAPES = [
   {
     id: 'r-nms005',
     title: 'mixtape series 005',
@@ -56,34 +60,85 @@ export const RELEASES = [
     catalog: 'NMS001',
     scUrl: 'https://soundcloud.com/nuancestudio/nuance-mixtape-series-001-w',
   },
-  {
-    id: 'r1',
-    title: 'ciel noir',
-    artist: 'cyprien noiriel',
-    date: '2026',
-    catalog: 'NUR001',
-    scUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
-  },
-  // ajouter chaque nouvelle sortie ici — apparaît automatiquement dans archives
+  // ajouter chaque nouvelle mixtape ici — apparaît automatiquement dans archives
 ];
 
-export const LABEL_RELEASE = {
-  catalog: 'TOT001',
-  title: 'the truth is out there',
-  label: 'nuance recording',
-  date: '18.11.2026',
-  artwork: '@bertanoezsoy',
-  tracklist: [
-    { artist: 'letherique', title: 'la commedia' },
-    { artist: 'shaed', title: 'pantone 808' },
-    { artist: 'shônagon', title: 'you got it' },
-    { artist: 'liema', title: 'grizzly' },
-    { artist: 'cyprien noiriel', title: 'transmission' },
-    { artist: 'd2000p', title: 'agent 13' },
-    { artist: 'crash server', title: 'x runs' },
-    { artist: 'ralt144mi', title: 'euclidean sports resort' },
-  ]
-};
+// sorties du label nuance recording — catégorie "releases"
+// ajouter chaque nouvelle sortie en haut de la liste (la plus récente d'abord)
+export const LABEL_RELEASES: LabelRelease[] = [
+  {
+    id: 'tot001',
+    catalog: 'TOT001',
+    title: 'the truth is out there',
+    artist: 'various artists',
+    format: 'various artists compilation',
+    date: '18.11.2026',
+    cover: coverTot001,
+    description: "“The Truth Is Out There” unfolds in the space between what we see and what we can explain, where a light streaks across the sky and vanishes, leaving only a strange shadow and an unanswered question. It’s a collective search for meaning in the unknown, guided by the certainty that something lies beyond our reach…",
+    tracklist: [
+      { position: '01', artist: 'letherique', title: 'la commedia' },
+      { position: '02', artist: 'shônagon', title: 'you got it' },
+      { position: '03', artist: 'schaed', title: 'pantone 808' },
+      { position: '04', artist: 'liema', title: 'grizzly' },
+      { position: '05', artist: 'd200p', title: 'agent 13' },
+      { position: '06', artist: 'cyprien noiriel', title: 'transmission' },
+      { position: '07', artist: 'crash server', title: 'x runs', note: 'live coding' },
+      { position: '08', artist: 'ralt144mi', title: 'euclidean sports resort', note: 'live coding' },
+    ],
+    credits: [
+      { role: 'label', name: 'nuance recording' },
+      { role: 'release', name: '18.11.2026 — all platforms' },
+      { role: 'mastering', name: '4bstr4cker' },
+      { role: 'artwork', name: 'Bertan Özsoy' },
+    ],
+    bandcampUrl: 'https://nuancerecording.bandcamp.com/album/tot001-the-truth-is-out-there-va-compilation',
+  },
+  {
+    id: 'nur001',
+    catalog: 'NUR001',
+    title: 'ciel noir',
+    artist: 'cyprien noiriel',
+    format: 'album',
+    date: '15.02.2026',
+    cover: coverNur001,
+    description: "“Ciel Noir” reflects the pervasive unease and quiet anxiety gripping society today. Through an introspective exploration, it examines illness, life, and death, unveiling the malaise eroding our world and its inequalities, while paying homage to the departed.",
+    tracklist: [
+      { position: 'A1', artist: 'cyprien noiriel', title: "ils m'observent" },
+      { position: 'A2', artist: 'cyprien noiriel', title: 'ciel noir' },
+      { position: 'A3', artist: 'cyprien noiriel', title: 'road rage' },
+      { position: 'A4', artist: 'cyprien noiriel', title: 'anthem of the flies' },
+      { position: 'B1', artist: 'cyprien noiriel', title: 'inhale' },
+      { position: 'B2', artist: 'cyprien noiriel', title: 'interrupted dream' },
+      { position: 'B3', artist: 'cyprien noiriel', title: 'exhale' },
+      { position: 'B4', artist: 'cyprien noiriel', title: 'detox' },
+    ],
+    credits: [
+      { role: 'written & produced by', name: 'Cyprien Noiriel' },
+      { role: 'label', name: 'nuance recording' },
+      { role: 'mixed by', name: 'Letherique / Bella Ursa' },
+      { role: 'mastered by', name: 'Zarkoff / Sensorium' },
+      { role: 'designed by', name: 'Patrick Strajnic / Galerie Decorde' },
+      { role: 'distributed by', name: 'Vinyl Future & Deejay DE' },
+      { role: 'manufactured by', name: 'B Side' },
+    ],
+    bandcampUrl: 'https://nuancerecording.bandcamp.com/album/nur001-ciel-noir-cyprien-noiriel',
+    soundcloudUrl: 'https://soundcloud.com/cyprien_nuance/sets/ciel-noir',
+  },
+];
+
+// charte de bonne conduite — affichée dans la section agenda
+export const CHARTE: string[] = [
+  "Lors de nos événements, n'oubliez pas de prendre soin les uns des autres comme si nous étions une seule famille.",
+  "Adoptez des comportements responsables et raisonnables dans votre façon de faire la fête et laissez les excès de côté.",
+  "Il s'agit avant tout de votre santé et de votre sécurité, mais aussi de notre responsabilité et de celle du lieu qui ouvre ses portes à notre collectif.",
+  "La piste de danse est le cœur battant de la fête : un lieu de liberté, de mouvement et d'énergie collective. Nous croyons en une philosophie où la piste de danse passe avant tout : un espace dédié à la joie, à l'expression de soi et à la convivialité.",
+  "Respectez-vous, respectez les autres et respectez le rythme de la musique. Donnez à chacun l'espace dont il a besoin pour danser, bouger et profiter du moment présent. Évitez de pousser, de bousculer ou de marcher sur les personnes autour de vous. Veillez les uns sur les autres et, si quelqu'un semble mal à l'aise, offrez-lui votre gentillesse et votre attention.",
+  "En honorant la piste de danse et ceux qui la partagent avec vous, nous créons un espace sûr, inclusif et dynamique où chacun peut vraiment se lâcher et faire la fête.",
+  "Respectez l'espace, le consentement et le corps de chacun et soyez attentif aux autres.",
+  "Prenez vos responsabilités, celles de vos actes et de vos paroles.",
+  "Le respect du corps et du consentement de chacun est essentiel pour une fête où chacun se sent en sécurité et à l'aise.",
+  "Si vous remarquez un comportement dangereux ou discriminatoire, qu'il soit sexiste, raciste, homophobe ou toute autre forme d'agression ou de harcèlement, n'hésitez pas à le signaler immédiatement au personnel et aux membres de notre collectif.",
+];
 
 export const EVENTS: Event[] = [
   {
