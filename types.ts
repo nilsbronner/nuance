@@ -29,6 +29,27 @@ export interface Podcast {
   url: string;
 }
 
+export interface LabelReleaseTrack {
+  position: string;
+  artist: string;
+  title: string;
+  note?: string;
+}
+
+export interface LabelRelease {
+  id: string;
+  catalog: string;
+  title: string;
+  artist: string;
+  format: string;
+  date: string;
+  cover: string;
+  description: string;
+  tracklist: LabelReleaseTrack[];
+  credits: { role: string; name: string }[];
+  bandcampUrl: string;
+}
+
 export interface SocialLink {
   name: string;
   url: string;

@@ -3,10 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import Hero from './components/Hero';
 import BandSection from './components/BandSection';
 import Footer from './components/Footer';
-import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASE, RELEASES } from './constants';
+import { LIVESTREAMS, EVENTS, SOCIAL_LINKS, STREAM_EMBEDS, PRESS_KIT_URL, ARCHIVE_COLLECTIONS, LABEL_RELEASES, RELEASES, CHARTE } from './constants';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import bgVision from './src/assets/images/regenerated_image_1778250332433.jpg';
+import bgReleases from './src/assets/images/band-releases.jpg';
 import bgStreaming from './src/assets/images/regenerated_image_1778250333183.jpg';
 import bgArchives from './src/assets/images/regenerated_image_1778250334116.jpg';
 import bgAgenda from './src/assets/images/regenerated_image_1778250335159.jpg';
@@ -124,7 +125,7 @@ const App: React.FC = () => {
     }
   };
 
-  const menuItems = ['vision', 'streaming', 'archives', 'agenda', 'connect'];
+  const menuItems = ['vision', 'releases', 'streaming', 'archives', 'agenda', 'connect'];
 
   return (
     <div className="relative antialiased bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
@@ -139,14 +140,14 @@ const App: React.FC = () => {
         </div>
         
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-12 text-[29px] leading-[80px]">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-12 text-[29px] leading-[80px]">
           {menuItems.map((item) => {
             const id = item.toLowerCase();
             return (
               <button 
                 key={item} 
                 onClick={() => scrollToSection(id)}
-                className={`text-[17px] font-medium lowercase tracking-[0.4em] transition-opacity ${openSectionId === id ? 'opacity-100 text-white' : 'opacity-20 hover:opacity-100'}`}
+                className={`text-[15px] xl:text-[17px] font-medium lowercase tracking-[0.25em] xl:tracking-[0.4em] transition-opacity ${openSectionId === id ? 'opacity-100 text-white' : 'opacity-20 hover:opacity-100'}`}
               >
                 {item}
               </button>
@@ -246,9 +247,118 @@ const App: React.FC = () => {
           </div>
         </BandSection>
 
-        <BandSection 
-          index={1} 
-          id="streaming" 
+        <BandSection
+          index={1}
+          id="releases"
+          title="releases"
+          isOpen={openSectionId === 'releases'}
+          onToggle={() => toggleSection('releases')}
+          subtitle="sorties du label nuance recording / disponibles sur bandcamp."
+          bgImage={bgReleases}
+        >
+          <div className="space-y-20 md:space-y-32">
+            {LABEL_RELEASES.map((release, idx) => {
+              const isCompilation = release.artist === 'various artists';
+              return (
+                <article
+                  key={release.id}
+                  id={`release-${release.id}`}
+                  className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 ${idx > 0 ? 'pt-20 md:pt-32 border-t border-white/5' : ''}`}
+                >
+                  {/* Pochette */}
+                  <div className="lg:col-span-5">
+                    <a
+                      href={release.bandcampUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative aspect-square overflow-hidden border border-white/10 group lg:sticky lg:top-28"
+                    >
+                      <img
+                        src={release.cover}
+                        alt={`${release.catalog} — ${release.title} — ${release.artist}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    </a>
+                  </div>
+
+                  {/* Infos */}
+                  <div className="lg:col-span-7 space-y-10 md:space-y-12">
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.4em] text-white/30 font-bold">
+                        <span>[{release.catalog}]</span>
+                        <span>{release.date}</span>
+                        <span>{release.format}</span>
+                      </div>
+                      <h3 className="text-4xl md:text-6xl font-bold lowercase tracking-tighter leading-none">
+                        {release.title}
+                      </h3>
+                      <p className="text-[11px] md:text-[13px] font-bold lowercase tracking-[0.3em] text-white/50">
+                        {release.artist}
+                      </p>
+                    </div>
+
+                    <p className="text-sm md:text-base leading-relaxed text-white/70 max-w-2xl">
+                      {release.description}
+                    </p>
+
+                    <a
+                      href={release.bandcampUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 text-[11px] md:text-[12px] font-bold lowercase tracking-[0.3em] bg-white text-black border border-white px-6 py-4 hover:bg-transparent hover:text-white transition-all"
+                    >
+                      acheter sur bandcamp <span aria-hidden="true">↗</span>
+                    </a>
+
+                    {/* Tracklist */}
+                    <div className="space-y-4">
+                      <h4 className="text-[11px] lowercase font-bold tracking-[0.4em] text-white/40">/// tracklist</h4>
+                      <ol>
+                        {release.tracklist.map((track) => (
+                          <li key={track.position} className="flex items-baseline gap-4 py-3 border-b border-white/5 group/track hover:border-white/20 transition-colors">
+                            <span className="text-[9px] uppercase text-white/20 font-bold w-5 shrink-0">{track.position}</span>
+                            {isCompilation ? (
+                              <>
+                                <span className="text-[11px] font-bold lowercase tracking-widest text-white/60 group-hover/track:text-white transition-colors">{track.artist}</span>
+                                <span className="text-[10px] lowercase tracking-widest text-white/30 italic ml-auto text-right">
+                                  {track.title}
+                                  {track.note && <span className="not-italic text-white/20"> ({track.note})</span>}
+                                </span>
+                              </>
+                            ) : (
+                              <span className="text-[11px] font-bold lowercase tracking-widest text-white/60 group-hover/track:text-white transition-colors">
+                                {track.title}
+                                {track.note && <span className="font-normal text-white/20"> ({track.note})</span>}
+                              </span>
+                            )}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* Crédits */}
+                    <div className="space-y-4">
+                      <h4 className="text-[11px] lowercase font-bold tracking-[0.4em] text-white/40">/// credits</h4>
+                      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                        {release.credits.map((credit) => (
+                          <div key={credit.role} className="flex flex-col gap-1">
+                            <dt className="text-[9px] uppercase tracking-[0.4em] text-white/20 font-bold">{credit.role}</dt>
+                            <dd className="text-[11px] lowercase tracking-widest text-white/60">{credit.name}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </BandSection>
+
+        <BandSection
+          index={2}
+          id="streaming"
           title="streaming" 
           isOpen={openSectionId === 'streaming'}
           onToggle={() => toggleSection('streaming')}
@@ -276,37 +386,10 @@ const App: React.FC = () => {
               </a>
             ))}
           </div>
-
-          {/* Release label */}
-          <div className="mt-16 md:mt-24 border-t border-white/5 pt-12 md:pt-16">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-16">
-              <div className="space-y-4 md:w-1/2">
-                <span className="text-[9px] uppercase tracking-[0.5em] text-white/20 font-bold block">/// label release</span>
-                <h3 className="text-4xl md:text-6xl font-bold lowercase tracking-tighter leading-none">
-                  {LABEL_RELEASE.title}
-                </h3>
-                <div className="flex gap-6 pt-2 text-[10px] uppercase tracking-[0.4em] text-white/30 font-bold">
-                  <span>[{LABEL_RELEASE.catalog}]</span>
-                  <span>{LABEL_RELEASE.date}</span>
-                  <span>{LABEL_RELEASE.label}</span>
-                </div>
-                <p className="text-[10px] lowercase tracking-widest text-white/20 pt-2">artwork — {LABEL_RELEASE.artwork}</p>
-              </div>
-              <div className="md:w-1/2 space-y-0">
-                {LABEL_RELEASE.tracklist.map((track, i) => (
-                  <div key={i} className="flex items-baseline gap-4 py-3 border-b border-white/5 group hover:border-white/20 transition-colors">
-                    <span className="text-[9px] text-white/20 font-bold w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="text-[11px] font-bold lowercase tracking-widest text-white/60 group-hover:text-white transition-colors">{track.artist}</span>
-                    <span className="text-[10px] lowercase tracking-widest text-white/25 italic ml-auto">{track.title}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </BandSection>
 
         <BandSection
-          index={2}
+          index={3}
           id="archives" 
           title="archives" 
           isOpen={openSectionId === 'archives'}
@@ -388,7 +471,7 @@ const App: React.FC = () => {
         </BandSection>
 
         <BandSection 
-          index={3} 
+          index={4} 
           id="agenda" 
           title="agenda" 
           isOpen={openSectionId === 'agenda'}
@@ -427,6 +510,28 @@ const App: React.FC = () => {
               </div>
             ))}
 
+            {/* Charte de bonne conduite */}
+            {CHARTE.length > 0 && (
+              <div id="charte" className="mt-12 md:mt-16 pt-10 md:pt-12 border-t border-white/5 px-2 md:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                  <div className="lg:col-span-4 space-y-4">
+                    <h3 className="text-[11px] lowercase font-bold tracking-[0.4em] text-white/40">/// charte</h3>
+                    <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter leading-tight">
+                      prenez soin les uns des autres.
+                    </h4>
+                  </div>
+                  <ol className="lg:col-span-8">
+                    {CHARTE.map((paragraph, i) => (
+                      <li key={i} className="flex gap-4 md:gap-6 py-4 md:py-5 border-b border-white/5">
+                        <span className="text-[9px] text-white/20 font-bold w-5 shrink-0 pt-1">{String(i + 1).padStart(2, '0')}</span>
+                        <p className="text-[13px] md:text-[15px] leading-relaxed text-white/70">{paragraph}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            )}
+
             {/* Past events */}
             {EVENTS.filter(e => e.type === 'past').length > 0 && (
               <div className="mt-12 md:mt-16 pt-8 border-t border-white/5">
@@ -450,7 +555,7 @@ const App: React.FC = () => {
         </BandSection>
 
         <BandSection 
-          index={4} 
+          index={5} 
           id="connect" 
           title="connect" 
           isOpen={openSectionId === 'connect'}
