@@ -23,9 +23,11 @@ const Footer: React.FC = () => {
             <h4 className="text-[11px] lowercase tracking-[0.5em] font-bold text-white/50">signal_path</h4>
             <ul className="space-y-4 text-[11px] font-medium lowercase tracking-[0.4em] text-white/30">
               <li><a href="#vision" className="hover:text-white transition-colors">/// vision</a></li>
+              <li><a href="#releases" className="hover:text-white transition-colors">/// releases</a></li>
               <li><a href="#archives" className="hover:text-white transition-colors">/// archives</a></li>
               <li><a href="#agenda" className="hover:text-white transition-colors">/// agenda</a></li>
               <li><a href="#connect" className="hover:text-white transition-colors">/// connect</a></li>
+              <li><a href="#charte" className="hover:text-white transition-colors">/// charte</a></li>
             </ul>
           </div>
           <div className="space-y-12">

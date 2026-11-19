@@ -111,6 +111,14 @@ const App: React.FC = () => {
     }, 100);
   };
 
+  const scrollToCharte = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      document.getElementById('charte')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
   const toggleSection = (id: string) => {
     const isOpening = openSectionId !== id;
     setOpenSectionId(isOpening ? id : null);
@@ -156,6 +164,13 @@ const App: React.FC = () => {
         </div>
         
         <div className="flex items-center gap-4">
+          <a
+            href="#charte"
+            onClick={scrollToCharte}
+            className="hidden sm:block text-[12px] md:text-[14px] font-medium lowercase tracking-widest text-white/40 hover:text-white transition-colors px-2"
+          >
+            charte
+          </a>
           <a 
             href={PRESS_KIT_URL}
             target="_blank"
@@ -202,6 +217,13 @@ const App: React.FC = () => {
                 className="mt-8 text-xl font-bold lowercase tracking-widest px-8 py-4 border border-white/10 hover:bg-white hover:text-black transition-all"
               >
                 presse
+              </a>
+              <a
+                href="#charte"
+                onClick={scrollToCharte}
+                className="text-sm font-medium lowercase tracking-[0.3em] text-white/40 hover:text-white transition-colors"
+              >
+                charte
               </a>
             </div>
           </motion.div>
@@ -522,28 +544,6 @@ const App: React.FC = () => {
               </div>
             ))}
 
-            {/* Charte de bonne conduite */}
-            {CHARTE.length > 0 && (
-              <div id="charte" className="mt-12 md:mt-16 pt-10 md:pt-12 border-t border-white/5 px-2 md:px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                  <div className="lg:col-span-4 space-y-4">
-                    <h3 className="text-[11px] lowercase font-bold tracking-[0.4em] text-white/40">/// charte</h3>
-                    <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter leading-tight">
-                      prenez soin les uns des autres.
-                    </h4>
-                  </div>
-                  <ol className="lg:col-span-8">
-                    {CHARTE.map((paragraph, i) => (
-                      <li key={i} className="flex gap-4 md:gap-6 py-4 md:py-5 border-b border-white/5">
-                        <span className="text-[9px] text-white/20 font-bold w-5 shrink-0 pt-1">{String(i + 1).padStart(2, '0')}</span>
-                        <p className="text-[13px] md:text-[15px] leading-relaxed text-white/70">{paragraph}</p>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
-            )}
-
             {/* Past events */}
             {EVENTS.filter(e => e.type === 'past').length > 0 && (
               <div className="mt-12 md:mt-16 pt-8 border-t border-white/5">
@@ -599,6 +599,29 @@ const App: React.FC = () => {
              </div>
           </div>
         </BandSection>
+        {/* Charte de bonne conduite — tout en bas du site */}
+        {CHARTE.length > 0 && (
+          <section id="charte" className="relative border-t border-white/5 bg-black scroll-mt-20">
+            <div className="px-6 md:px-12 py-20 md:py-32 max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                <div className="lg:col-span-4 space-y-4 lg:sticky lg:top-28 self-start">
+                  <h3 className="text-[11px] lowercase font-bold tracking-[0.4em] text-white/40">/// charte</h3>
+                  <h4 className="text-3xl md:text-4xl font-bold lowercase tracking-tighter leading-tight">
+                    prenez soin les uns des autres.
+                  </h4>
+                </div>
+                <ol className="lg:col-span-8">
+                  {CHARTE.map((paragraph, i) => (
+                    <li key={i} className="flex gap-4 md:gap-6 py-4 md:py-5 border-b border-white/5">
+                      <span className="text-[9px] text-white/20 font-bold w-5 shrink-0 pt-1">{String(i + 1).padStart(2, '0')}</span>
+                      <p className="text-[13px] md:text-[15px] leading-relaxed text-white/70">{paragraph}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />
