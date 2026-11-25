@@ -152,15 +152,6 @@ export const EVENTS: Event[] = [
     ticketUrl: 'https://fr.ra.co/events/2553089'
   },
   {
-    id: 'e4',
-    title: 'release party — the truth is out there',
-    date: '20.11.26',
-    location: 'vault club, mulhouse',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
-    description: 'release party [TOT001] nuance recording. vault club mulhouse.',
-    type: 'upcoming'
-  },
-  {
     id: 'e0',
     title: 'checkpoint — soirée gaming',
     date: '11.06.26',
@@ -185,6 +176,15 @@ export const EVENTS: Event[] = [
     location: 'parc gruber, koenigshoffen',
     image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
     description: "dj sets, lives, ateliers, stands, vinyles d'occasion, fripes.",
+    type: 'past'
+  },
+  {
+    id: 'e4',
+    title: 'release party — the truth is out there',
+    date: '20.11.26',
+    location: 'vault club, mulhouse',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000',
+    description: 'release party [TOT001] nuance recording. vault club mulhouse.',
     type: 'past'
   }
 ];
